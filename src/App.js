@@ -55,38 +55,46 @@ const average = (arr) =>
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("asdasdasdedwas");
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  useEffect(
-    () => async () => {
+
+  useEffect(() => {
+    const fetchMovies = async () => {
       try {
         setIsLoading(true);
+        setError("");
         const res = await fetch(
           `https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
         );
         if (!res.ok)
           throw new Error("Something went wrong with fetching movies");
+
         const data = await res.json();
-        console.log(data);
+        console.log(data)
         if (data.Response === "False")
-          throw new Error("Movie Couldn't be found");
+          throw new Error(data.Error);
 
         setMovies(data.Search);
-        setIsLoading(false);
       } catch (err) {
+        console.log(err);
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
-    },
-    []
-  );
+    };
+
+    if (query) fetchMovies();
+    else {
+      setMovies([]);
+      setError("");
+    }
+  }, [query]);
 
   return (
     <>
       <NavBar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </NavBar>
 
@@ -147,15 +155,14 @@ function NumResults({ movies }) {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
       type="text"
       placeholder="Search movies..."
       value={query}
-      onChange={(e) => setQuery(e.target.value)}
+      onInput={(e) => setQuery(e.target.value)}
     />
   );
 }
@@ -251,11 +258,11 @@ function MovieList({ movies }) {
 function Movie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <img src={movie.Poster} alt={`${movie.Title}`} />
       <h3>{movie.Title}</h3>
       <div>
         <p>
-          <span>🗓</span>
+          <span>📆</span>
           <span>{movie.Year}</span>
         </p>
       </div>

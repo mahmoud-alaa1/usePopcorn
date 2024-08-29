@@ -15,7 +15,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cccccc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6c6c6c;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3e3e3e;
+}
 html {
   font-size: 62.5%;
 }
@@ -42,20 +60,19 @@ body {
 }
 
 .main {
-  margin-top: 2.4rem;
   height: calc(100vh - 7.2rem - 3 * 2.4rem);
+  margin-top: 2.4rem;
   display: flex;
   gap: 2.4rem;
   justify-content: center;
 }
 
 .box {
-  width: 42rem;
-  max-width: 42rem;
+  width: 50%;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .loader {
@@ -96,7 +113,7 @@ body {
   padding: 1.1rem 1.6rem;
   font-size: 1.8rem;
   border-radius: 0.7rem;
-  width: 40rem;
+  width: 75%;
   transition: all 0.3s;
   color: var(--color-text);
 
@@ -346,3 +363,14 @@ FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
 */
 
+@media (max-width: 960px) {
+  .main {
+    flex-direction: column;
+      margin-top: 10rem;
+
+  }
+  .box {
+    width: 100%;
+    min-height: 50vh;
+  }
+}
