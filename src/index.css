@@ -365,11 +365,11 @@ FONT SIZE SYSTEM (px)
 */
 
 @media (max-width: 570px) {
-  .list img {
+  .main .box:nth-child(1) .list img {
     grid-row: span 1;
     grid-column: span 2;
   }
-  .list li {
+  .main .box:nth-child(1) .list img  {
     grid-template-columns: auto auto;
     row-gap: 1rem;
   }
@@ -381,6 +381,9 @@ FONT SIZE SYSTEM (px)
     justify-content: center;
     align-items:center ;
     gap: 1rem;
+  }
+ .box header img{
+    width: 80%;
   }
 }
 
