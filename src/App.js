@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
-
 const KEY = "15e40346";
 
 const average = (arr) =>

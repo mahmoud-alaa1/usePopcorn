@@ -4,12 +4,11 @@ const containerStyle = {
   display: "flex",
   alignItems: "center",
   gap: "16px",
-  justifyContent:"space-between",
+  justifyContent: "center",
 };
 
 const starContainerStyle = {
   display: "flex",
-
 };
 
 StarRating.protoType = {
@@ -59,11 +58,13 @@ export default function StarRating({
           />
         ))}
       </div>
-      <p style={textStyle}>
-        {messages.length === maxRating
-          ? messages[tempRating ? tempRating - 1 : rating - 1]
-          : tempRating || rating || ""}
-      </p>
+      <div style={{width:"1.5rem"}}>
+        <p style={textStyle}>
+          {messages.length === maxRating
+            ? messages[tempRating ? tempRating - 1 : rating - 1]
+            : tempRating || rating || ``}
+        </p>
+      </div>
     </div>
   );
 }
