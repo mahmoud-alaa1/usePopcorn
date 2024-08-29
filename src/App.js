@@ -79,8 +79,8 @@ export default function App() {
     const signal = controller.signal;
 
     const fetchMovies = async () => {
-      setIsLoading(true); 
-      setError(""); 
+      setIsLoading(true);
+      setError("");
       try {
         const res = await fetch(
           `https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`,
@@ -95,23 +95,23 @@ export default function App() {
         setMovies(data.Search);
       } catch (err) {
         if (err.name !== "AbortError") {
-          setMovies([]); 
+          setMovies([]);
           setError(err.message);
         }
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
 
     if (query) fetchMovies();
     else {
-      setMovies([]); 
+      setMovies([]);
       setError("");
-      setIsLoading(false); 
+      setIsLoading(false);
     }
 
     return () => {
-      controller.abort(); 
+      controller.abort();
     };
   }, [query]);
 
@@ -355,6 +355,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       getMovieDetails();
     },
     [selectedId]
+  );
+
+  useEffect(
+    function () {
+      function callBack(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+          console.log("Closing");
+        }
+      }
+      document.addEventListener("keydown", callBack);
+      return () => document.removeEventListener("keydown", callBack);
+    },
+    [onCloseMovie]
   );
 
   useEffect(
