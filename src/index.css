@@ -305,6 +305,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  margin: auto;
+  width: 80%;
 }
 
 .btn-add {
@@ -366,8 +368,7 @@ FONT SIZE SYSTEM (px)
 @media (max-width: 960px) {
   .main {
     flex-direction: column;
-      margin-top: 10rem;
-
+    margin-top: 10rem;
   }
   .box {
     width: 100%;

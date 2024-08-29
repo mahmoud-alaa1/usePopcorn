@@ -4,10 +4,12 @@ const containerStyle = {
   display: "flex",
   alignItems: "center",
   gap: "16px",
+  justifyContent:"space-between",
 };
 
 const starContainerStyle = {
   display: "flex",
+
 };
 
 StarRating.protoType = {
@@ -34,7 +36,7 @@ export default function StarRating({
 
   function handleRating(rating) {
     setRating(rating);
-    onSetRating(rating);
+    if (onSetRating !== undefined) onSetRating(rating);
   }
   const textStyle = {
     lineHeight: "1",
