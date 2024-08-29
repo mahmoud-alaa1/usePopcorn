@@ -55,17 +55,30 @@ const average = (arr) =>
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("interstellar");
+  const [query, setQuery] = useState("asdasdasdedwas");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   useEffect(
     () => async () => {
-      setIsLoading(true);
-      const res = await fetch(
-        `https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
-      );
-      const data = await res.json();
-      setMovies(data.Search);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
+        );
+        if (!res.ok)
+          throw new Error("Something went wrong with fetching movies");
+        const data = await res.json();
+        console.log(data);
+        if (data.Response === "False")
+          throw new Error("Movie Couldn't be found");
+
+        setMovies(data.Search);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     },
     []
   );
@@ -78,7 +91,15 @@ export default function App() {
       </NavBar>
 
       <Main>
-        <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box>
+        <Box>
+          {error ? (
+            <ErrorMessage message={error} />
+          ) : isLoading ? (
+            <Loader />
+          ) : (
+            <MovieList movies={movies} />
+          )}
+        </Box>
 
         <Box>
           <WatchedSummary watched={watched} />
@@ -88,9 +109,18 @@ export default function App() {
     </>
   );
 }
+
 function Loader() {
   return <p className="loader">Loading...</p>;
 }
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span>🚫</span> {message}
+    </p>
+  );
+}
+
 function NavBar({ children }) {
   return (
     <nav className="nav-bar">
