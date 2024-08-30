@@ -71,18 +71,28 @@ body {
   border-radius: 0.9rem;
   position: relative;
   overflow: hidden;
-  padding: 0.5rem;
-  min-height: calc(100vh - 10rem);
-  max-height: calc(100vh - 10rem);
+  padding: 0.5rem 0.8rem;
+  height: calc(100vh - 10rem);
+
 }
 
-.main .box:nth-child(2) .details{
-  overflow-y: scroll ;
+.main .box:nth-child(2) .details {
   height: 100%;
+  overflow-y: scroll;
 }
-
-
-
+main.main .box:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+main.main .box:nth-child(2) ul li div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+main.main .box:nth-child(2) .watched-movie-details {
+  flex-direction: column;
+  align-items: baseline;
+}
 .loader {
   text-align: center;
   text-transform: uppercase;
@@ -132,7 +142,7 @@ button {
 
 .btn-toggle {
   position: absolute;
-  top: 1rem;
+  top: 0.3rem;
   right: 1rem;
   width: 40px;
   height: 40px;
@@ -153,16 +163,20 @@ button {
 
 .list li {
   position: relative;
-  display: grid;
-  grid-template-columns: 4rem 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 2.4rem;
-  font-size: 1.6rem;
-  align-items: center;
-  padding: 1.6rem 1rem;
+  display: flex;
+  font-size: 1.3rem;
   border-bottom: 1px solid var(--color-background-100);
+  padding: 2rem 1rem;
+  gap: 1rem;
+  align-items: center;
 }
-
+.list li .title {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  align-self: flex-start;
+}
 .list.list-movies li {
   cursor: pointer;
   transition: all 0.3s;
@@ -171,25 +185,17 @@ button {
 .list.list-movies li:hover {
   background-color: var(--color-background-100);
 }
-img{
+img {
   border-radius: 0.5rem;
+  object-fit: contain;
 }
 .list img {
-  width: 100%;
-  grid-row: 1 / -1;
   border-radius: 0.8rem;
-  max-height: 25rem;
-  object-fit: contain;
+  max-height: 10rem;
 }
 
 .list h3 {
-  font-size: 1.8rem;
-}
-
-.list div {
-  display: flex;
-  align-items: center;
-  gap: 2.4rem;
+  font-size: 1.5rem;
 }
 
 .list p {
@@ -200,17 +206,16 @@ img{
 
 .btn-delete {
   position: absolute;
-  right: 2.4rem;
+  right: 0.5rem;
+  top: 1.5rem;
   text-align: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  border: none;
   background-color: var(--color-red);
-  color: var(--color-background-900);
-  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
+  color: #dee2e6;
 }
 
 .btn-delete:hover {
@@ -224,8 +229,9 @@ img{
   border-radius: 0.9rem;
   background-color: var(--color-background-100);
   box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
 }
-.summary > div{
+.summary > div {
   flex-wrap: wrap;
 }
 .summary h2 {
@@ -272,7 +278,7 @@ img{
 
 .details-overview {
   width: 100%;
-  padding: 2.4rem 3rem;
+  padding: 1rem;
   background-color: var(--color-background-100);
   display: flex;
   flex-direction: column;
@@ -294,18 +300,19 @@ img{
 .rating {
   background-color: var(--color-background-100);
   border-radius: 0.9rem;
-  padding: 2rem 2.4rem;
+  padding: 1rem 1rem;
   margin-bottom: 0.8rem;
   font-weight: 600;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
   margin: auto;
-  width: 80%;
   justify-content: center;
   align-items: center;
 }
-
+.rating div {
+  flex-wrap: wrap;
+}
 .btn-add {
   background-color: var(--color-primary);
   color: var(--color-text);
@@ -369,21 +376,27 @@ FONT SIZE SYSTEM (px)
     grid-row: span 1;
     grid-column: span 2;
   }
-  .main .box:nth-child(1) .list img  {
+  .main .box:nth-child(1) .list img {
     grid-template-columns: auto auto;
     row-gap: 1rem;
   }
-  .box .details section{
-      padding:2rem 0.5rem;
+  .box .details section {
+    padding: 2rem 0.5rem;
   }
-  .box header{
+  .box header {
     flex-direction: column;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
     gap: 1rem;
   }
- .box header img{
+  .box header img {
     width: 80%;
+  }
+  .list li {
+    flex-direction: column;
+  }
+  .watched-movie-details{
+    align-self: start;
   }
 }
 
@@ -393,7 +406,7 @@ FONT SIZE SYSTEM (px)
   }
   .box {
     width: 100%;
-    height:90vh;
+    height: 90vh;
   }
   .nav-bar {
     flex-direction: column;
