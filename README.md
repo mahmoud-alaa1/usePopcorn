@@ -33,6 +33,14 @@ npm install
 
 5. Enjoy
 
+## Screenshots
+Here’s a glimpse of the usePopcorn app in action:
+
+![image](https://github.com/user-attachments/assets/e27e792b-ed72-43c0-8183-ee58f59b85ec)
+![image](https://github.com/user-attachments/assets/c9def625-ab27-4d5b-9d3b-882504ba08f4)
+![image](https://github.com/user-attachments/assets/b3da6fad-7681-4964-94b4-34aad1be9e30)
+
+
 
 ## Technologies Used
 - React: JavaScript library for building user interfaces.
