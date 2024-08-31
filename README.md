@@ -18,8 +18,7 @@ you can explore the project on Vercel here [usePopcorn](https://usepopcorn-puce.
 ## Installation
 1. Clone the repository:
 ```
-[git clone https://github.com/yourusername/usePopcorn.git
-](https://github.com/mahmoud-alaa1/usePopcorn.git)
+git clone https://github.com/mahmoud-alaa1/usePopcorn.git
 ```
 
 2. Navigate to the project directory:
