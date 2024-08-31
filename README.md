@@ -11,6 +11,10 @@ usePopcorn is a movie discovery and watchlist application built with React. The 
 - 📝 Watched List: Keep track of movies you’ve watched, along with your personal rating.
 - 🗑️ Remove from Watchlist: Remove movies from your watched list.
 
+## Live Demo
+you can explore the project on Vercel here [usePopcorn](https://usepopcorn-puce.vercel.app/)
+
+
 ## Installation
 1. Clone the repository:
 ```
@@ -30,8 +34,6 @@ npm install
 
 5. Enjoy
 
-## Live Demo
-you can explore the project on Vercel here `[usePopcorn](https://usepopcorn-puce.vercel.app/)`
 
 ## Technologies Used
 - React: JavaScript library for building user interfaces.
