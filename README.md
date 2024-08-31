@@ -30,6 +30,9 @@ npm install
 
 5. Enjoy
 
+## Live Demo
+you can explore the project on Vercel here `[usePopcorn](https://usepopcorn-puce.vercel.app/)`
+
 ## Technologies Used
 - React: JavaScript library for building user interfaces.
 - OMDB API: Movie database API for retrieving movie data.
